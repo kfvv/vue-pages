@@ -25,10 +25,18 @@ const nameData = [
 </script>
 <template>
   <header>
-    <div class="wrapper"></div>
+    <div class="wrapper">
+      <h1>Autocomplete input component</h1>
+    </div>
   </header>
   <main>
-    <AutoCompleteInput :suggestions="nameData" />
+    <div class="parent__container">
+      <div class="autocomplete__input-container">
+        <div class="parent__main">
+          <AutoCompleteInput :suggestions="nameData" />
+        </div>
+      </div>
+    </div>
   </main>
 </template>
 <style scoped>
@@ -36,9 +44,28 @@ header {
   line-height: 1.5;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.parent__main {
+  height: 100%;
+  padding-top: 50px;
+  background: #f8f8f7;
+  border-radius: 8px;
+}
+
+.parent__container {
+  width: 100%;
+  height: 500px;
+  transition:
+    width 2s,
+    height 2s;
+}
+
+.autocomplete__input-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 @media (width >= 1024px) {

@@ -213,10 +213,9 @@ function scrollIntoView(): void {
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 100%;
   min-height: 48px;
-  padding: 2px;
-  background-color: #f5f5f5;
+  margin: 10px;
+  background-color: white;
   border: 1px solid #ddd;
   border-radius: 6px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
@@ -246,7 +245,6 @@ function scrollIntoView(): void {
   max-height: 212.5px;
   margin-top: 5px;
   overflow: auto;
-  font-family: Roboto, sans-serif;
   background: #fff;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
 }
