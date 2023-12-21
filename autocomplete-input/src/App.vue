@@ -17,10 +17,10 @@ const nameData = [
   'Ralph Clark',
   'Jean Alexander',
   'Stephen Roberts',
-  'Eric Long',
-  'Amanda Scott',
-  'Teresa Diaz',
-  'Wanda Thomas',
+  // 'Eric Long',
+  // 'Amanda Scott',
+  // 'Teresa Diaz',
+  // 'Wanda Thomas',
 ]
 </script>
 <template>

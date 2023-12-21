@@ -126,17 +126,8 @@ module.exports = {
                 // Vue
                 '^vue',
                 '^@vue',
-                // Capacitor
-                '^@capacitor',
-                '^capacitor',
-                '^cordova',
               ],
-              [
-                // @lp packages
-                '^@lp/',
-                // Other external packages
-                '^@?\\w',
-              ],
+              ['^@?\\w'],
               // Types
               ['^@/models'],
               [
@@ -168,6 +159,6 @@ module.exports = {
   parser: 'vue-eslint-parser',
   parserOptions: {
     parser: '@typescript-eslint/parser',
-    project: 'tsconfig.json',
+    project: './autocomplete-input/tsconfig.json',
   },
 }
