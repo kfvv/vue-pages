@@ -1,21 +1,22 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-
-const userInput = ref<string>('')
-const arrowCounter = ref<number>(-1)
-const showSuggestions = ref<boolean>(false)
+import { computed, ref } from 'vue'
 
 const props = defineProps<{
   suggestions: string[]
 }>()
+const userInput = ref<string>('')
+const arrowCounter = ref<number>(-1)
+const showSuggestions = ref<boolean>(false)
 
 const matches = computed<string[]>(() => {
   const userInputLower = userInput.value.toLowerCase()
-  return props.suggestions.filter((s) => s.toLowerCase().includes(userInputLower))
+  return props.suggestions.filter((s) =>
+    s.toLowerCase().includes(userInputLower)
+  )
 })
 
 const highlightMatches = (text: string): string => {
-  var textMatcher = new RegExp(userInput.value, 'ig')
+  const textMatcher = new RegExp(userInput.value, 'ig')
 
   return text.replace(textMatcher, function (match) {
     return '<strong>' + match + '</strong>'
@@ -54,7 +55,6 @@ function handleKeyChange(key: 'up' | 'down' | 'enter'): void {
   }
 }
 </script>
-
 <template>
   <div id="app" class="input__container">
     <div class="input__field">
@@ -74,9 +74,9 @@ function handleKeyChange(key: 'up' | 'down' | 'enter'): void {
         <li
           v-for="(match, i) in matches"
           :key="i"
+          :class="{ 'is-active': i === arrowCounter }"
           @click="selectSuggestion(match)"
           @mousedown.prevent
-          :class="{ 'is-active': i === arrowCounter }"
         >
           <span v-html="highlightMatches(match)"></span>
         </li>
@@ -84,20 +84,20 @@ function handleKeyChange(key: 'up' | 'down' | 'enter'): void {
     </div>
   </div>
 </template>
-
 <style scoped>
 .input__container {
-  margin: 0 auto;
-  max-width: 400px;
   position: relative;
   width: 100%;
   min-width: 0;
+  max-width: 400px;
+  margin: 0 auto;
   margin: 0;
 
   .input__field {
     position: relative;
     display: flex;
     flex-direction: row;
+    align-items: center;
     width: 100%;
     min-height: 48px;
     padding: 2px;
@@ -105,7 +105,6 @@ function handleKeyChange(key: 'up' | 'down' | 'enter'): void {
     border: 1px solid #ddd;
     border-radius: 6px;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
-    align-items: center;
   }
 }
 
@@ -113,7 +112,7 @@ function handleKeyChange(key: 'up' | 'down' | 'enter'): void {
   flex: 1 1 auto;
   padding: 12px 18px;
   overflow: hidden;
-  font-family: 'Roboto', sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 16px;
   line-height: 26px;
   color: #444;
@@ -129,12 +128,12 @@ function handleKeyChange(key: 'up' | 'down' | 'enter'): void {
 
 .input__options {
   position: absolute;
-  font-family: 'Roboto', sans-serif;
   z-index: 5;
   width: 100%;
   max-height: 250px;
   overflow: auto;
-  background: #ffffff;
+  font-family: Roboto, sans-serif;
+  background: #fff;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
 
   ul {
@@ -154,6 +153,7 @@ function handleKeyChange(key: 'up' | 'down' | 'enter'): void {
     &::before {
       content: none;
     }
+
     .is-active {
       background-color: #e5e5e5;
     }
@@ -164,8 +164,8 @@ function handleKeyChange(key: 'up' | 'down' | 'enter'): void {
     }
 
     .highlight {
-      font-weight: 700 !important;
       font-size: 32px;
+      font-weight: 700 !important;
     }
   }
 }

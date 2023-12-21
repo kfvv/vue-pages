@@ -1,15 +1,15 @@
-/* eslint-env node */
-require('@rushstack/eslint-patch/modern-module-resolution')
-
 module.exports = {
   root: true,
   env: {
     es2021: true,
-    'vue/setup-compiler-macros': true
+    'vue/setup-compiler-macros': true,
+    browser: true,
+    amd: true,
+    node: true,
   },
   globals: {
     logger: true,
-    global: true
+    global: true,
   },
   extends: [
     'plugin:vue/vue3-recommended',
@@ -18,7 +18,7 @@ module.exports = {
     '@vue/eslint-config-typescript',
     'prettier',
     'plugin:prettier/recommended',
-    'plugin:vitest/recommended'
+    'plugin:vitest/recommended',
   ],
   rules: {
     'no-console': 'warn',
@@ -30,8 +30,8 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': [
       'error',
       {
-        argsIgnorePattern: '^_'
-      }
+        argsIgnorePattern: '^_',
+      },
     ],
     semi: ['error', 'never'],
     'space-before-function-paren': [
@@ -39,8 +39,8 @@ module.exports = {
       {
         anonymous: 'always',
         named: 'never',
-        asyncArrow: 'always'
-      }
+        asyncArrow: 'always',
+      },
     ],
     'vue/require-explicit-emits': 'off',
     'no-import-assign': 'off',
@@ -49,8 +49,8 @@ module.exports = {
     'vue/block-order': [
       'error',
       {
-        order: ['script', 'template', 'style']
-      }
+        order: ['script', 'template', 'style'],
+      },
     ],
     'vue/component-name-in-template-casing': 1,
     'vue/custom-event-name-casing': 1,
@@ -68,28 +68,27 @@ module.exports = {
     'vue/component-api-style': ['error', ['script-setup']],
     'vue/padding-line-between-blocks': ['error', 'never'],
     '@typescript-eslint/naming-convention': [
-      'warn',
+      'error',
       {
         selector: 'variable',
-        format: ['camelCase']
+        format: ['camelCase'],
       },
-      'error',
       {
         selector: 'variableLike',
         format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
-        leadingUnderscore: 'allow'
+        leadingUnderscore: 'allow',
       },
       {
         selector: 'typeLike',
-        format: ['PascalCase']
+        format: ['PascalCase'],
       },
       {
         selector: 'interface',
         format: ['PascalCase'],
         custom: {
           regex: '^I[A-Z]',
-          match: false
-        }
+          match: false,
+        },
       },
       {
         selector: [
@@ -100,21 +99,21 @@ module.exports = {
           'objectLiteralMethod',
           'typeMethod',
           'accessor',
-          'enumMember'
+          'enumMember',
         ],
         format: null,
-        modifiers: ['requiresQuotes']
-      }
+        modifiers: ['requiresQuotes'],
+      },
     ],
     'simple-import-sort/imports': 'error',
-    'simple-import-sort/exports': 'error'
+    'simple-import-sort/exports': 'error',
   },
   overrides: [
     {
       files: ['*.stories.*'],
       rules: {
-        '@typescript-eslint/naming-convention': 0
-      }
+        '@typescript-eslint/naming-convention': 0,
+      },
     }, // override "simple-import-sort" config
     {
       files: ['*.js', '*.jsx', '*.ts', '*.tsx', '*.vue'],
@@ -126,11 +125,17 @@ module.exports = {
               [
                 // Vue
                 '^vue',
-                '^@vue'
+                '^@vue',
+                // Capacitor
+                '^@capacitor',
+                '^capacitor',
+                '^cordova',
               ],
               [
+                // @lp packages
+                '^@lp/',
                 // Other external packages
-                '^@?\\w'
+                '^@?\\w',
               ],
               // Types
               ['^@/models'],
@@ -138,7 +143,7 @@ module.exports = {
                 // stores
                 '^@/store',
                 // Other internal packages.
-                '^@'
+                '^@',
               ],
               [
                 // Parent imports. Put `..` last.
@@ -151,18 +156,18 @@ module.exports = {
                 '^\\.(?!/?$)',
                 '^\\./?$',
                 // Style imports.
-                '^.+\\.?(css)$'
-              ]
-            ]
-          }
-        ]
-      }
-    }
+                '^.+\\.?(css)$',
+              ],
+            ],
+          },
+        ],
+      },
+    },
   ],
   plugins: ['prettier', 'vitest', 'simple-import-sort'],
   parser: 'vue-eslint-parser',
   parserOptions: {
     parser: '@typescript-eslint/parser',
-    project: 'tsconfig.json'
-  }
+    project: 'tsconfig.json',
+  },
 }

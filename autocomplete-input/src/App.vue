@@ -20,20 +20,24 @@ const nameData = [
   'Eric Long',
   'Amanda Scott',
   'Teresa Diaz',
-  'Wanda Thomas'
+  'Wanda Thomas',
 ]
 </script>
-
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+    <img
+      alt="Vue logo"
+      class="logo"
+      src="./assets/logo.svg"
+      width="125"
+      height="125"
+    />
     <div class="wrapper"></div>
   </header>
   <main>
     <AutoCompleteInput :suggestions="nameData" />
   </main>
 </template>
-
 <style scoped>
 header {
   line-height: 1.5;
@@ -44,7 +48,7 @@ header {
   margin: 0 auto 2rem;
 }
 
-@media (min-width: 1024px) {
+@media (width >= 1024px) {
   header {
     display: flex;
     place-items: center;
@@ -57,8 +61,8 @@ header {
 
   header .wrapper {
     display: flex;
-    place-items: flex-start;
     flex-wrap: wrap;
+    place-items: flex-start;
   }
 }
 </style>
