@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/vue-pages/autocomplete-input',
+  base: '/vue-pages',
   plugins: [vue()],
   resolve: {
     alias: {
