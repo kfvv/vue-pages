@@ -87,6 +87,8 @@ function handleKeyChange(key: 'up' | 'down' | 'enter'): void {
 
 <style scoped>
 .input__container {
+  margin: 0 auto;
+  max-width: 400px;
   position: relative;
   width: 100%;
   min-width: 0;
@@ -96,7 +98,7 @@ function handleKeyChange(key: 'up' | 'down' | 'enter'): void {
     position: relative;
     display: flex;
     flex-direction: row;
-    width: 30%;
+    width: 100%;
     min-height: 48px;
     padding: 2px;
     background-color: #f5f5f5;
@@ -129,7 +131,7 @@ function handleKeyChange(key: 'up' | 'down' | 'enter'): void {
   position: absolute;
   font-family: 'Roboto', sans-serif;
   z-index: 5;
-  width: 30%;
+  width: 100%;
   max-height: 250px;
   overflow: auto;
   background: #ffffff;
